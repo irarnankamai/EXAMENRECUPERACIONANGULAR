@@ -1,0 +1,27 @@
+<div>
+    <h2>Listado de Cursos</h2>
+  
+    <ul *ngIf="cursos.length > 0">
+      <li *ngFor="let curso of cursos">
+        <span>ID: {{ curso.codigo }} | Nombre: {{ curso.nombre }} | Cupo: {{ curso.cupo }} | Fecha Inicio: {{ curso.fechaInicio }}</span>
+        <button (click)="selectCurso(curso)">Seleccionar</button>
+      </li>
+    </ul>
+  
+    <div *ngIf="selectedCurso">
+      <h3>Detalles del Curso</h3>
+      <p>ID: {{ selectedCurso.codigo }}</p>
+      <p>Nombre: {{ selectedCurso.nombre }}</p>
+      <p>Cupo: {{ selectedCurso.cupo }}</p>
+      <p>Fecha Inicio: {{ selectedCurso.fechaInicio }}</p>
+      <div *ngIf="selectedCurso.inscripciones && selectedCurso.inscripciones.length > 0">
+        <h4>Inscripciones</h4>
+        <ul>
+          <li *ngFor="let inscripcion of selectedCurso.inscripciones">
+            {{ inscripcion.nombreAlumno }} {{ inscripcion.apellidoAlumno }} (Cedula: {{ inscripcion.cedulaAlumno }})
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

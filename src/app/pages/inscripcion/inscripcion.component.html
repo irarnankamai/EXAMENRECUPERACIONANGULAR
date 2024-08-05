@@ -1,0 +1,24 @@
+<div>
+    <h2>Listado de Inscripciones</h2>
+    <div>
+      <label for="cursoId">Buscar inscripciones por curso:</label>
+      <input id="cursoId" [(ngModel)]="cursoId" type="number" placeholder="ID del curso">
+      <button (click)="findByCurso()">Buscar</button>
+    </div>
+  
+    <ul *ngIf="inscripciones.length > 0">
+      <li *ngFor="let inscripcion of inscripciones">
+        <span>ID: {{ inscripcion.codigo }} | Estudiante: {{ inscripcion.nombreAlumno }} {{ inscripcion.apellidoAlumno }} | Curso: {{ inscripcion.curso.codigo }} | Fecha: {{ inscripcion.fechaInscripcion }}</span>
+        <button (click)="selectInscripcion(inscripcion)">Seleccionar</button>
+      </li>
+    </ul>
+  
+    <div *ngIf="selectedInscripcion">
+      <h3>Detalles de Inscripción</h3>
+      <p>ID: {{ selectedInscripcion.codigo }}</p>
+      <p>Nombre: {{ selectedInscripcion.nombreAlumno }} {{ selectedInscripcion.apellidoAlumno }}</p>
+      <p>Cédula: {{ selectedInscripcion.cedulaAlumno }}</p>
+      <p>Curso ID: {{ selectedInscripcion.curso.codigo }}</p>
+      <p>Fecha: {{ selectedInscripcion.fechaInscripcion }}</p>
+    </div>
+  </div>
